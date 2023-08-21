@@ -1,0 +1,43 @@
+:root {
+    --div-width: 25%; /* default width for the child div elements */
+  }
+  
+  .main-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .main-container > div {
+    width: var(--div-width);
+    margin: 10px;
+    text-align: center;
+  }
+  
+  @media (max-width: 600px) {
+    :root {
+      --div-width: 50%; /* adjust width for screens up to 600px */
+    }
+  }
+  
+  @media (max-width: 400px) {
+    :root {
+      --div-width: 100%; /* adjust width for screens up to 400px */
+    }
+  }
+@media only screen and (max-width:992px){
+  .desk-img{
+    display: none;
+  }
+  .icon-div{
+    flex-direction: column-reverse !important;
+  }
+  .biit-logo{
+    text-align: center !important;
+    margin-bottom: 1rem;
+  }
+  .std-tch{
+    text-align: center !important;
+  }
+}  
+
