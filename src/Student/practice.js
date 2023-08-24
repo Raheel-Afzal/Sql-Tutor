@@ -164,11 +164,9 @@ const handleApplyWhereCondition = () => {
     fetch("http://localhost/FYPAPI/api/Teacher/GetDatabaseList")
       .then((response) => response.json())
       .then((data) => {
-        const filteredDbList = data.filter((db) =>
-          ["FYP1", "Student", "StDB"].includes(db)
-        );
-        setDatabases(filteredDbList);
-        setSelectedDb(filteredDbList[0]);
+
+        setDatabases(data);
+        setSelectedDb(data[0]);
       });
   }, []);
   useEffect(() => {
