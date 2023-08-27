@@ -547,6 +547,7 @@ function AssignmentForm() {
   const handleSubmit = event => {
     event.preventDefault();
 
+    console.log('assignment',assignment)
     // Create form data
     const formData = new FormData();
     formData.append('file', file);

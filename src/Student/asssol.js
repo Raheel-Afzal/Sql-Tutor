@@ -55,7 +55,7 @@
 //   state = {
 //     assignments: [],
 //   };
-  
+
 //   componentDidMount() {
 //     // Fetch assignment details
 //     axios
@@ -67,7 +67,7 @@
 //         console.error('Error fetching assignments:', error);
 //       });
 //   }
-  
+
 
 //   handleDownload = (solutionId) => {
 //     axios({
@@ -102,35 +102,35 @@
 
 //     return (
 //       <div className="container-fluid p-0">
-        // <nav className="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        //   <a href="index.html" className="navbar-brand d-flex align-items-center px-4 px-lg-5">
-        //     <img src={logo} alt="Logo" style={{ width: '40px', height: 'auto' }} />
-        //     <h2 className="m-0 ms-3 text-primary">BIIT DATABASE TUTOR</h2>
-        //   </a>
-        //   <button
-        //     type="button"
-        //     className="navbar-toggler me-4"
-        //     data-bs-toggle="collapse"
-        //     data-bs-target="#navbarCollapse"
-        //   >
-        //     <span className="navbar-toggler-icon"></span>
-        //   </button>
-        //   <div className="collapse navbar-collapse" id="navbarCollapse">
-        //     <div className="navbar-nav ms-auto p-4 p-lg-0">
-        //       <a href="/home" className="nav-item nav-link active">
-        //         Home
-        //       </a>
-        //       <a href="/login" className="nav-item nav-link">
-        //         Logout
-        //       </a>
-        //       {/* <a href="/assignmentlist" className="nav-item nav-link">
-        //         {email}
-        //       </a> */}
-        //     </div>
+// <nav className="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
+//   <a href="index.html" className="navbar-brand d-flex align-items-center px-4 px-lg-5">
+//     <img src={logo} alt="Logo" style={{ width: '40px', height: 'auto' }} />
+//     <h2 className="m-0 ms-3 text-primary">BIIT DATABASE TUTOR</h2>
+//   </a>
+//   <button
+//     type="button"
+//     className="navbar-toggler me-4"
+//     data-bs-toggle="collapse"
+//     data-bs-target="#navbarCollapse"
+//   >
+//     <span className="navbar-toggler-icon"></span>
+//   </button>
+//   <div className="collapse navbar-collapse" id="navbarCollapse">
+//     <div className="navbar-nav ms-auto p-4 p-lg-0">
+//       <a href="/home" className="nav-item nav-link active">
+//         Home
+//       </a>
+//       <a href="/login" className="nav-item nav-link">
+//         Logout
+//       </a>
+//       {/* <a href="/assignmentlist" className="nav-item nav-link">
+//         {email}
+//       </a> */}
+//     </div>
 
-        //     <img src={studentIcon} alt="Student Icon" style={iconStyle} />
-        //   </div>
-        // </nav>
+//     <img src={studentIcon} alt="Student Icon" style={iconStyle} />
+//   </div>
+// </nav>
 
 //         <main className="container">
 //           <div>
@@ -395,14 +395,16 @@ function DownloadSolution() {
 
   useEffect(() => {
     // Fetch assignment details
-    axios
-      .get(`http://localhost/FYPAPI/api/Student/GetSolutions?section=${section}&Semester=${semester}`)
-      .then((response) => {
-        setAssignments(response.data);
-      })
-      .catch((error) => {
-        console.error('Error fetching assignments:', error);
-      });
+    if (section && semester) {
+      axios
+        .get(`http://localhost/FYPAPI/api/Student/GetSolutions?section=${section}&Semester=${semester}`)
+        .then((response) => {
+          setAssignments(response.data);
+        })
+        .catch((error) => {
+          console.error('Error fetching assignments:', error);
+        });
+    }
   }, [section, semester]);
 
   const handleDownload = (solutionId) => {
@@ -458,7 +460,7 @@ function DownloadSolution() {
             <a href="/home" className="nav-item nav-link active">
               Home
             </a>
-           
+
 
             <a href="/login" className="nav-item nav-link">
               Logout
@@ -499,8 +501,8 @@ function DownloadSolution() {
       </main>
 
       <footer className="bg-dark text-light text-center py-3 fixed-bottom">
-  Assignment Portal &copy; {new Date().getFullYear()}
-</footer>
+        Assignment Portal &copy; {new Date().getFullYear()}
+      </footer>
 
     </div>
   );

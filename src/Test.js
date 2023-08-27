@@ -163,26 +163,8 @@ const handleApplyWhereCondition = () => {
     fetch("http://localhost/FYPAPI/api/Teacher/GetDatabaseList")
       .then((response) => response.json())
       .then((data) => {
-        const filteredDbList = data.filter((db) =>
-          [ "Electric_Shop",
-          "DBTest1",
-          "StDB",
-          "Student",
-          "task1",
-          "DBTest2",
-          "FYP1",
-          "AtncSyst",
-          "DBTest3",
-          "DBTest4",
-          "DBTest5",
-          "DBTest6",
-          "DBTest7",
-          "DBTest8",
-          "DBTest9",
-          "DBTest10"].includes(db)
-        );
-        setDatabases(filteredDbList);
-        setSelectedDb(filteredDbList[0]);
+        setDatabases(data);
+        setSelectedDb(data[0]);
       });
   }, []);
   useEffect(() => {
